@@ -13,6 +13,7 @@ module.exports = {
         350:"350px",
         375:"375px",
         460:"460px",
+
         656:"656px",
         880:"880px",
         508:"508px"
@@ -26,6 +27,8 @@ module.exports = {
         420:"420px",
         510:"510px",
         600:"600px",
+        650:"650px",
+        
         685:"685px",
         800:"800px",
         "90vh":"90vh"
@@ -46,7 +49,9 @@ module.exports = {
         headingcolor:"#2e2e2e",
         textcolor:"#515151",
         cartNumBg:"#e80013",
-        primary:"#f5f3f3"
+        primary:"#f5f3f3",
+        cardOverlay:"rgba(256,256,256,0.4)",
+        lighttextgray:"#9ca0ab"
       }
     },
   },

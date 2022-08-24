@@ -1,0 +1,42 @@
+export const categoriesData=[
+    {
+        id:1,
+        name:"chiken",
+        ulparamname:"chiken"
+    },
+    {
+        id:2,
+        name:"curry",
+        ulparamname:"curry"
+    },
+    {
+        id:3,
+        name:"rice",
+        ulparamname:"rice"
+    },
+    {
+        id:4,
+        name:"fish",
+        ulparamname:"fish"
+    },
+    {
+        id:5,
+        name:"fruits",
+        ulparamname:"fruits"
+    },
+    {
+        id:6,
+        name:"icecreams",
+        ulparamname:"icecreams"
+    },
+    {
+        id:7,
+        name:"deserts",
+        ulparamname:"deserts"
+    },
+    {
+        id:8,
+        name:"soft drinks",
+        ulparamname:"drinks"
+    },
+]

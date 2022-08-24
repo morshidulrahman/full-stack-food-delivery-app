@@ -39,7 +39,7 @@ function Header() {
     });
   };
   return (
-    <div className="z-50 w-screen md:p-6 md:px-16 p-3 px-8">
+    <div className="z-50 w-screen md:p-6 md:px-16 p-3 px-8 fixed bg-primary">
       {/* destop && tablet */}
       <div className="w-full hidden md:flex items-center justify-between">
         <Link to="/" className="flex gap-2 items-center">
