@@ -1,7 +1,7 @@
 import React from 'react'
 import Delevary from "../../img/delivery.png"
 import Herobg from "../../img/heroBg.png"
-import Iice from "../../img/i1.png"
+import { Herodata } from '../data'
 function HomeContainer() {
   return (
     <>
@@ -37,42 +37,21 @@ function HomeContainer() {
        className='h-420 w-full lg:w-auto lg:h-650 ml-auto'
       />
       <div className='w-full h-full absolute top-0 left-0 py-4 lg:px-32 flex items-center justify-center flex-wrap gap-5'>
-         <div className='w-190 p-4 bg-cardOverlay rounded-2xl flex flex-col items-center justify-center backdrop-blur-md drop-shadow-lg'>
-             <img 
-             className='lg:-mt-20 lg:w-40 w-20 -mt-10'
-             src={Iice} 
-             alt="icecream" />
-             <p className='lg:text-xl text-base font-semibold text-textcolor lg:mt-4 mt-2'>Icecream</p>
-             <p className='lg:text-sm text-lighttextgray lg:my-3 my-1 text-xs'>Chocolate & vanilla</p>
-              <p className=' text-[12px] lg:text-sm text-headingcolor'><span className='text-xs text-red-600'>$</span> 5.25</p>
-         </div>
-         <div className='w-190 p-4 bg-cardOverlay rounded-2xl flex flex-col items-center justify-center backdrop-blur-md drop-shadow-lg'>
-             <img 
-             className='lg:-mt-20 lg:w-40 w-20 -mt-10'
-             src={Iice} 
-             alt="icecream" />
-             <p className='lg:text-xl text-base font-semibold text-textcolor lg:mt-4 mt-2'>Icecream</p>
-             <p className='lg:text-sm text-lighttextgray lg:my-3 my-1 text-xs'>Chocolate & vanilla</p>
-              <p className=' text-[12px] lg:text-sm text-headingcolor'><span className='text-xs text-red-600'>$</span> 5.25</p>
-         </div>
-         <div className='w-190 p-4 bg-cardOverlay rounded-2xl flex flex-col items-center justify-center backdrop-blur-md drop-shadow-lg'>
-             <img 
-             className='lg:-mt-20 lg:w-40 w-20 -mt-10'
-             src={Iice} 
-             alt="icecream" />
-             <p className='lg:text-xl text-base font-semibold text-textcolor lg:mt-4 mt-2'>Icecream</p>
-             <p className='lg:text-sm text-lighttextgray lg:my-3 my-1 text-xs'>Chocolate & vanilla</p>
-              <p className=' text-[12px] lg:text-sm text-headingcolor'><span className='text-xs text-red-600'>$</span> 5.25</p>
-         </div>
-         <div className='w-190 p-4 bg-cardOverlay rounded-2xl flex flex-col items-center justify-center backdrop-blur-md drop-shadow-lg'>
-             <img 
-             className='lg:-mt-20 lg:w-40 w-20 -mt-10'
-             src={Iice} 
-             alt="icecream" />
-             <p className='lg:text-xl text-base font-semibold text-textcolor lg:mt-4 mt-2'>Icecream</p>
-             <p className='lg:text-sm text-lighttextgray lg:my-3 my-1 text-xs'>Chocolate & vanilla</p>
-              <p className=' text-[12px] lg:text-sm text-headingcolor'><span className='text-xs text-red-600'>$</span> 5.25</p>
-         </div>
+         
+      {
+        Herodata?.map(item=>(
+          <div className='w-190 p-4 bg-cardOverlay rounded-2xl flex flex-col items-center justify-center backdrop-blur-md drop-shadow-lg' key={item.id}>
+          <img 
+          className='lg:-mt-20 lg:w-40 w-20 -mt-10'
+          src={item.imagesrc} 
+          alt="icecream" />
+          <p className='lg:text-xl text-base font-semibold text-textcolor lg:mt-4 mt-2'>{item.name}</p>
+          <p className='lg:text-sm text-lighttextgray lg:my-3 my-1 text-xs'>{item.decp}</p>
+           <p className=' text-[12px] lg:text-sm text-headingcolor'><span className='text-xs text-red-600'>$</span>{item.price}</p>
+      </div>
+        ))
+      }
+          
       </div>
      </div>
     </div>
