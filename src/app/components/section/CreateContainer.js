@@ -1,6 +1,7 @@
 import  { useState } from "react";
-import {ref, uploadBytesResumable,getDownloadURL} from "firebase/storage"
+import {ref, uploadBytesResumable,getDownloadURL, deleteObject} from "firebase/storage"
 import {Storage} from "../../../firebaseconfig"
+import { savingdata } from "../../utils/firebasefunction";
 import {
   MdFastfood,
   MdCloudUpload,
@@ -47,7 +48,7 @@ function CreateContainer() {
         setimageaseset(downloadURL)
         setloading(false)
         setfeild(true)
-        setmsg("image uploade succesfully")
+        setmsg("image uploade succesfully 😊")
         setalert("success")
         setTimeout(() => {
           setfeild(false)
@@ -56,9 +57,70 @@ function CreateContainer() {
     })
   };
  
-  const deletphoto = () => {};
+  const deletphoto = () => {
+    setloading(true)
+    const deletref=ref(Storage,assetimage)
+    deleteObject(deletref).then(()=>{
+      setimageaseset(null)
+      setloading(false)
+      setfeild(true)
+      setmsg("Image deleted successfully 😊")
+      setTimeout(()=>{
+        setfeild(false)
+      },2000)
+    })
+  };
 
-  const savebutton = () => {};
+  const savebutton = () => {
+    setloading(true)
+    try{
+       if(!title || !calories || !assetimage || !prices || !categroy){
+        setfeild(true)
+        setmsg("Required fields can't be empty ")
+        setalert("danger")
+        setTimeout(() => {
+          setfeild(false)
+          setloading(false)
+        },2000);
+       }else{
+        const data={
+          id:`${Date.now()}`,
+          title,
+          imageURL:assetimage,
+          categroy,
+          prices,
+          calories,
+          qty:1
+        }
+        savingdata(data)
+        setloading(false)
+        setfeild(true)
+        setmsg("image uploade succesfully 😊")
+        setalert("success")
+        setTimeout(() => {
+          setfeild(false)
+          cleardata()
+        }, 2000);
+       }
+
+    }catch(error){
+      setfeild(true)
+      setmsg("Error while uploading : Try Again 🫥")
+      setalert("danger")
+      setTimeout(() => {
+        setfeild(false)
+        setloading(false)
+      },2000);
+  };
+  }
+   
+  const cleardata =()=>{
+    settitle("")
+    setimageaseset(null)
+    setcalories("")
+    setprices("")
+    setcalories("select category")
+  }
 
   return (
     <div className="w-full min-h-screen flex justify-center items-center">
@@ -138,7 +200,7 @@ function CreateContainer() {
                     />
                     <button
                       type="button"
-                      onChange={deletphoto}
+                      onClick={deletphoto}
                       className="absolute bg-red-500 p-3 bottom-3 right-3 hover:shadow-md cursor-pointer duration-300 ease-in-out text-xl rounded-full"
                     >
                       <MdDelete className="text-white" />
@@ -176,7 +238,7 @@ function CreateContainer() {
         </div>
         <div className="w-full items-center flex">
           <button
-            onChange={savebutton}
+            onClick={savebutton}
             type="button"
             className="ml-0 md:ml-auto w-full md:w-auto text-white px-12 py-2 rounded-lg border-none bg-emerald-500 font-semibold"
           >
@@ -188,4 +250,4 @@ function CreateContainer() {
   );
 }
 
-export default CreateContainer;
+export default CreateContainer

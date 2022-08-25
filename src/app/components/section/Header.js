@@ -15,7 +15,7 @@ function Header() {
   const provider = new GoogleAuthProvider();
   const [{ user }, dispatch] = Usestatevalue();
   const [menu, setmenu] = useState(false);
-
+  console.log(user)
   const login = async () => {
     if (!user) {
       const {
@@ -122,7 +122,7 @@ function Header() {
           <motion.img
             whileTap={{ scale: 0.6 }}
             src={user ? user?.photoURL : avatar}
-            alt="avatar"
+            alt="data nai"
             onClick={login}
             className="w-10 h-10 min-w-[40px] min-h-[40px] drop-shadow-xl rounded-full"
           />
