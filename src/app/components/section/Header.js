@@ -8,6 +8,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../../../firebaseconfig";
 import { Usestatevalue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
+import Navmenu from "../elements/Navmenu";
 
 function Header() {
 
@@ -53,18 +54,7 @@ function Header() {
             exit={{ opacity: 0, x: 200 }}
             className="flex items-center space-x-8"
           >
-            <li className="text-textcolor text-base hover:text-headingcolor duration-100 transition-all ease-in-out capitalize">
-              home
-            </li>
-            <li className="text-textcolor text-base hover:text-headingcolor duration-100 transition-all ease-in-out capitalize">
-              menu
-            </li>
-            <li className="text-textcolor text-base hover:text-headingcolor duration-100 transition-all ease-in-out capitalize">
-              about us
-            </li>
-            <li className="text-textcolor text-base hover:text-headingcolor duration-100 transition-all ease-in-out capitalize">
-              service
-            </li>
+            <Navmenu/>
           </motion.ul>
           <div className="relative flex items-center justify-center">
             <MdShoppingBasket className="text-2xl text-textcolor cursor-pointer" />
@@ -113,7 +103,6 @@ function Header() {
             <p className="text-white  font-semibold text-xs">2</p>
           </div>
         </div>
-
         <Link to="/" className="flex gap-2 items-center">
           <img src={logo} alt="logo" className="w-8 object-cover " />
           <p className="text-headingcolor text-xl font-bold capitalize">city</p>
@@ -141,18 +130,7 @@ function Header() {
                 </Link>
               )}
               <ul className="flex flex-col">
-                <li className="text-textcolor text-base hover:text-headingcolor duration-100 transition-all ease-in-out capitalize px-4 py-2 hover:bg-slate-100">
-                  home
-                </li>
-                <li className="text-textcolor text-base hover:text-headingcolor duration-100 transition-all ease-in-out capitalize px-4 py-2 hover:bg-slate-100">
-                  menu
-                </li>
-                <li className="text-textcolor text-base hover:text-headingcolor duration-100 transition-all ease-in-out capitalize px-4 py-2 hover:bg-slate-100">
-                  about us
-                </li>
-                <li className="text-textcolor text-base hover:text-headingcolor duration-100 transition-all ease-in-out capitalize px-4 py-2 hover:bg-slate-100">
-                  service
-                </li>
+                 <Navmenu className={"px-4 py-2 hover:bg-slate-100"}/>
               </ul>
               <p
                 className="m-2 p-3 rounded-md shadow-lg text-base capitalize bg-slate-100 hover:bg-slate-300 duration-100 transition-all ease-in-out flex items-center gap-3"

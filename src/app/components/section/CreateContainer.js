@@ -11,6 +11,9 @@ import {
 } from "react-icons/md";
 import Loader from "./loader";
 import { categoriesData } from "../data";
+import Inputbox from "../elements/Inputbox";
+
+
 
 function CreateContainer() {
   const [feild, setfeild] = useState(false);
@@ -22,6 +25,19 @@ function CreateContainer() {
   const [assetimage, setimageaseset] = useState(null);
   const [msg, setmsg] = useState(null);
   const [loading, setloading] = useState(false);
+
+
+   const handlechnage=(value)=>{
+     settitle(value)
+   }
+   
+   const handlecalories=(value)=>{
+    setcalories(value)
+  }
+
+  const handleprices=(value)=>{
+     setprices(value)
+  }
 
   const uploadImage = (e) => {
     setloading(true);
@@ -136,17 +152,12 @@ function CreateContainer() {
             {msg}
           </p>
         )}
-        <div className="w-full border-gray-300 py-2 border-b flex items-center gap-2">
-          <MdFastfood className="text-xl text-gray-700" />
-          <input
-            type="text"
-            placeholder="Give me a title..."
-            required
-            value={title}
-            onChange={(e) => settitle(e.target.value)}
-            className="w-full h-full text-lg text-textcolor placeholder:text-gray-500 outline-none border-none"
-          />
-        </div>
+         <Inputbox
+          icon={<MdFastfood/>}
+           handledata={handlechnage}
+          title={title} 
+          placeholder="Give me title..." 
+         />
         <div className="w-full">
           <select
             onChange={(e) => setcategory(e.target.value)}
@@ -212,28 +223,18 @@ function CreateContainer() {
           )}
         </div>
         <div className="w-full flex flex-col md:flex-row items-center gap-3">
-          <div className="w-full border-gray-300 py-2 border-b flex items-center gap-2">
-            <MdFoodBank className="text-xl text-gray-700" />
-            <input
-              type="text"
-              placeholder="Carories"
-              required
-              value={calories}
-              onChange={(e) => setcalories(e.target.value)}
-              className="w-full h-full text-lg text-textcolor placeholder:text-gray-400 outline-none border-none"
-            />
-          </div>
-          <div className="w-full border-gray-300 py-2 border-b flex items-center gap-2">
-            <MdAttachMoney className="text-xl text-gray-700" />
-            <input
-              type="text"
-              placeholder="prices"
-              required
-              value={prices}
-              onChange={(e) => setprices(e.target.value)}
-              className="w-full h-full text-lg text-textcolor placeholder:text-gray-400 outline-none border-none"
-            />
-          </div>
+           <Inputbox
+          icon={<MdFoodBank/>}
+          handledata={handlecalories}
+          title={calories} 
+          placeholder="calories" 
+         />
+        <Inputbox
+          icon={<MdAttachMoney/>}
+          handledata={handleprices}
+          title={prices} 
+          placeholder="price" 
+         />
           <div></div>
         </div>
         <div className="w-full items-center flex">
