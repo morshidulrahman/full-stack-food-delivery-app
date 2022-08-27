@@ -1,7 +1,7 @@
 import  { useState } from "react";
 import {ref, uploadBytesResumable,getDownloadURL, deleteObject} from "firebase/storage"
 import {Storage} from "../../../firebaseconfig"
-import { savingdata } from "../../utils/firebasefunction";
+import { getalldata, savingdata } from "../../utils/firebasefunction";
 import {
   MdFastfood,
   MdCloudUpload,
@@ -12,8 +12,8 @@ import {
 import Loader from "./loader";
 import { categoriesData } from "../data";
 import Inputbox from "../elements/Inputbox";
-
-
+import { actionType } from "../../context/reducer";
+import { Usestatevalue } from "../../context/StateProvider";
 
 function CreateContainer() {
   const [feild, setfeild] = useState(false);
@@ -26,6 +26,15 @@ function CreateContainer() {
   const [msg, setmsg] = useState(null);
   const [loading, setloading] = useState(false);
 
+  const[{fooditems},dispatch]=Usestatevalue()
+  const fetchdata=async()=>{
+     await getalldata().then(data=>{
+      dispatch({
+        type:actionType.SET_FOOD_ITES,
+        fooditems:data
+       })
+     })
+  }
 
    const handlechnage=(value)=>{
      settitle(value)
@@ -128,6 +137,7 @@ function CreateContainer() {
         setloading(false)
       },2000);
   };
+  fetchdata()
   }
    
   const cleardata =()=>{
