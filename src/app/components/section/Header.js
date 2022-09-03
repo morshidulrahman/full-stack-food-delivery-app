@@ -14,9 +14,10 @@ function Header() {
 
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
-  const [{ user }, dispatch] = Usestatevalue();
+  const [{ user, cartshow, cartItems }, dispatch] = Usestatevalue();
   const [menu, setmenu] = useState(false);
-  console.log(user)
+
+
   const login = async () => {
     if (!user) {
       const {
@@ -31,6 +32,7 @@ function Header() {
       setmenu(!menu);
     }
   };
+
   const logout = () => {
     setmenu(false);
     localStorage.clear();
@@ -39,6 +41,12 @@ function Header() {
       user: null,
     });
   };
+  const showcart = () => {
+    dispatch({
+      type: actionType.SET_SHOW_ITEMS,
+      cartshow: !cartshow
+    });
+  }
   return (
     <div className="z-50 w-screen md:p-6 md:px-16 p-3 px-8 fixed bg-primary">
       {/* destop && tablet */}
@@ -54,13 +62,15 @@ function Header() {
             exit={{ opacity: 0, x: 200 }}
             className="flex items-center space-x-8"
           >
-            <Navmenu/>
+            <Navmenu />
           </motion.ul>
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center" onClick={showcart}>
             <MdShoppingBasket className="text-2xl text-textcolor cursor-pointer" />
-            <div className="w-5 h-5 absolute -top-2 -right-2 rounded-full bg-cartNumBg flex justify-center items-center">
-              <p className="text-white  font-semibold text-xs">2</p>
-            </div>
+            {cartItems && cartItems.length > 0 && (
+              <div className="w-5 h-5 absolute -top-2 -right-2 rounded-full bg-cartNumBg flex justify-center items-center">
+                <p className="text-white  font-semibold text-xs">{cartItems.length}</p>
+              </div>
+            )}
           </div>
           <div className="relative">
             <motion.img
@@ -97,11 +107,13 @@ function Header() {
       </div>
       {/* mobile menu */}
       <div className="w-full flex md:hidden justify-between">
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center" onClick={showcart}>
           <MdShoppingBasket className="text-2xl text-textcolor cursor-pointer" />
-          <div className="w-5 h-5 absolute top-0 -right-2 rounded-full bg-cartNumBg flex justify-center items-center">
-            <p className="text-white  font-semibold text-xs">2</p>
-          </div>
+          {cartItems && cartItems.length > 0 && (
+            <div className="w-5 h-5 absolute -top-2 -right-2 rounded-full bg-cartNumBg flex justify-center items-center">
+              <p className="text-white  font-semibold text-xs">{cartItems.length}</p>
+            </div>
+          )}
         </div>
         <Link to="/" className="flex gap-2 items-center">
           <img src={logo} alt="logo" className="w-8 object-cover " />
@@ -130,7 +142,7 @@ function Header() {
                 </Link>
               )}
               <ul className="flex flex-col">
-                 <Navmenu className={"px-4 py-2 hover:bg-slate-100"}/>
+                <Navmenu className={"px-4 py-2 hover:bg-slate-100"} />
               </ul>
               <p
                 className="m-2 p-3 rounded-md shadow-lg text-base capitalize bg-slate-100 hover:bg-slate-300 duration-100 transition-all ease-in-out flex items-center gap-3"
