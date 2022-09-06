@@ -6,7 +6,7 @@ import { Rawcontainer } from "../section"
 import { Usestatevalue } from '../../context/StateProvider';
 
 function Menucontainer() {
-  const [{ fooditems }, dispatch] = Usestatevalue()
+  const [{ fooditems }] = Usestatevalue()
   const [filter, setfilter] = useState("chiken")
   return (
     <div className='w-full my-6' id="menu">
