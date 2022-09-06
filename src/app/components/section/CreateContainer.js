@@ -55,7 +55,7 @@ function CreateContainer() {
     const uplodetask = uploadBytesResumable(storageref, imagefile)
 
     uplodetask.on("state_changed",
-      (snapshot) => { }, (error) => {
+      (error) => {
         console.log(error)
         setfeild(true)
         setmsg("Error while uploading : Try Again 🫥")

@@ -1,5 +1,6 @@
 export const fetchuser = () => {
-    const userinfo =
+    // eslint-disable-next-line
+    let userinfo =
         localStorage.getItem("user") !== "undefined"
             ? JSON.parse(localStorage.getItem("user"))
             : localStorage.clear()
@@ -8,7 +9,8 @@ export const fetchuser = () => {
 }
 
 export const fetchcart = () => {
-    const cartinfo =
+    // eslint-disable-next-line
+    let cartinfo =
         localStorage.getItem("cartItems") !== "undefined"
             ? JSON.parse(localStorage.getItem("cartItems"))
             : localStorage.clear()

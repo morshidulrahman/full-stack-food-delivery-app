@@ -25,7 +25,7 @@ function Cartcontainer() {
       total + item.qty * item.prices
       , 0);
     setTot(totalPrice);
-
+    // eslint-disable-next-line
   }, [tot, flag])
 
 

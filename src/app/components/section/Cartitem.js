@@ -19,20 +19,25 @@ function Cartitem({ item, setFlag, flag }) {
     const updateqty = (action, id) => {
         if (action === "add") {
             setqty(qty + 1)
+            // eslint-disable-next-line
             cartItems.map(item => {
                 if (item.id === id) {
                     item.qty += 1
                     setFlag(flag + 1)
                 }
             })
+            // eslint-disable-next-line
             cartdispatch()
         } else {
+            // eslint-disable-next-line
             if (qty == 1) {
+                // eslint-disable-next-line
                 items = cartItems.filter(item => item.id !== id)
                 setFlag(flag + 1)
                 cartdispatch()
             } else {
                 setqty(qty - 1)
+                // eslint-disable-next-line
                 cartItems.map(item => {
                     if (item.id === id) {
                         item.qty -= 1
@@ -43,9 +48,10 @@ function Cartitem({ item, setFlag, flag }) {
             }
         }
     }
-
+    // eslint-disable-next-line
     useEffect(() => {
         setitems(cartItems)
+        // eslint-disable-next-line
     }, [qty, items])
 
     return (

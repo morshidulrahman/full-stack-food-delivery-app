@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { actionType } from "./app/context/reducer";
 
 function App() {
+  // eslint-disable-next-line
   const [{ fooditems }, dispatch] = Usestatevalue()
   const fetchdata = async () => {
     await getalldata().then(data => {
@@ -17,10 +18,12 @@ function App() {
     })
   }
   useEffect(() => {
+    // eslint-disable-next-line
     fetchdata()
+    // eslint-disable-next-line
   }, [])
   return (
-    <AnimatePresence>
+    <AnimatePresence >
       <div className="w-screen h-auto flex flex-col bg-primary relative">
         <Header />
         <main className="md:mt-20 mt-14 md:px-16 py-4 w-full px-4">
