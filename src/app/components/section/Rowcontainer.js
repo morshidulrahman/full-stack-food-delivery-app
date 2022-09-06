@@ -26,7 +26,7 @@ function Rowcontainer({ flag, data, scrollvalue }) {
   useEffect(() => {
     setloading(true)
     rowref.current.scrollLeft += scrollvalue
-    console.log(rowref.current.scrollLeft += scrollvalue)
+
   }, [scrollvalue])
 
   setTimeout(() => {
